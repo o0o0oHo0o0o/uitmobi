@@ -1,15 +1,15 @@
-package com.alibou.security.request;
+    package com.alibou.security.request;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+    import lombok.*;
 
-@Getter
-@Setter
-@Builder
-public class ChangePasswordRequest {
+    @Getter
+    @Setter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public class ChangePasswordRequest {
 
-    private String currentPassword;
-    private String newPassword;
-    private String confirmationPassword;
-}
+        private String currentPassword;
+        private String newPassword;
+        private String confirmationPassword;
+    }

@@ -1,5 +1,6 @@
 package com.alibou.security.service;
 
+import com.alibou.security.repository.TokenRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -11,12 +12,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class JwtService {
+  private final TokenRepository tokenRepository;
 
   @Value("${application.security.jwt.secret-key}")
   private String secretKey;
@@ -91,5 +95,13 @@ public class JwtService {
   private Key getSignInKey() {
     byte[] keyBytes = Decoders.BASE64.decode(secretKey);
     return Keys.hmacShaKeyFor(keyBytes);
+  }
+  // Xóa (revoke) token
+  public void revokeToken(String token) {
+    tokenRepository.findByToken(token).ifPresent(t -> {
+      t.setExpired(true);
+      t.setRevoked(true);
+      tokenRepository.save(t);
+    });
   }
 }

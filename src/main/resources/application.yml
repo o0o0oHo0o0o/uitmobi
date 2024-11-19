@@ -37,3 +37,7 @@ logging:
   level:
     org.springframework.mail: DEBUG
     org.springframework.mail.javamail: DEBUG
+    root: INFO
+    org.springframework.security: DEBUG
+    com.alibou.security: DEBUG
+    org.springframework.web: DEBUG
