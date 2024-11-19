@@ -92,6 +92,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<finalName>DrComputer-0.0.1-SNAPSHOT</finalName>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
