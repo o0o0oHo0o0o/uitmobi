@@ -26,6 +26,9 @@ spring:
       mail.smtp.starttls.enable: true
       mail.smtp.starttls.required: true
       mail.smtp.debug: true
+server:
+  port: ${PORT:8080}
+
 application:
   security:
     jwt:
