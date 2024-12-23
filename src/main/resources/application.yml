@@ -1,9 +1,23 @@
 spring:
   datasource:
-    url: jdbc:mysql://root:DiUrZHbtUvzPtJOZshwxMaTEqiSaExhH@autorack.proxy.rlwy.net:22216/railway
-    username: root
-    password: DiUrZHbtUvzPtJOZshwxMaTEqiSaExhH
+    url: jdbc:mysql://35.223.133.105:3306/jwt_security
+    username: mysql
+    password: admin123
     driver-class-name: com.mysql.cj.jdbc.Driver
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 240468386264-1asgrqr7ne0giuusaictohdordpuvkl3.apps.googleusercontent.com
+            client-secret: YOUR_GOOGLE_CLIENT_SECRET
+            scope: profile, email
+            redirect-uri: "{baseUrl}/login/oauth2/code/google"
+        provider:
+          google:
+            authorization-uri: https://accounts.google.com/o/oauth2/auth
+            token-uri: https://oauth2.googleapis.com/token
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
   jpa:
     hibernate:
       ddl-auto: update
@@ -44,3 +58,4 @@ logging:
     org.springframework.security: DEBUG
     com.alibou.security: DEBUG
     org.springframework.web: DEBUG
+
